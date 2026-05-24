@@ -1,0 +1,6 @@
+{
+  "name": "Personal Super App",
+  "description": "Dashboard serba guna dengan perencanaan harian, pelacak arus kas, dan habit tracker bertema Neo Brutalism & Retro 8-bit.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
