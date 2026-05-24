@@ -292,7 +292,7 @@ export default function DashboardOverview() {
                   <button
                     id="submit-task-btn"
                     type="submit"
-                    className="w-full border-3 border-black bg-red-500 text-white font-black uppercase py-2.5 text-xs tracking-wider shadow-[3px_3px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_rgba(0,0,0,1)] hover:bg-red-650 transition cursor-pointer mt-2"
+                    className="w-full border-3 border-black bg-red-500 text-white font-black uppercase py-2.5 text-xs tracking-wider shadow-[3px_3px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_rgba(0,0,0,1)] hover:bg-red-600 transition cursor-pointer mt-2"
                   >
                     ➕ TAMBAH TUGAS (QUEST)
                   </button>
@@ -495,9 +495,9 @@ export default function DashboardOverview() {
         <div id="right-column" className="lg:col-span-8 flex flex-col gap-6">
           {/* A. CONDENSED QUESTS PREVIEW */}
           <section className="border-4 border-black bg-white shadow-[6px_6px_0px_rgba(0,0,0,1)] flex flex-col">
-            <div className="bg-red-650 text-white p-4 border-b-4 border-black flex justify-between items-center">
+            <div className="bg-red-600 text-white p-4 border-b-4 border-black flex justify-between items-center">
               <div className="flex items-center gap-2">
-                <CheckSquare size={18} className="shrink-0 text-white" />
+                <CheckSquare size={18} className="shrink-0 text-yellow" />
                 <h2 className="text-base font-black uppercase italic tracking-tight">Active Quests (Preview)</h2>
               </div>
               <Link
