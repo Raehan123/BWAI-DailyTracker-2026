@@ -18,13 +18,6 @@ export default function HeaderAndNav() {
   const [curDate, setCurDate] = useState('');
   const [currentUser, setCurrentUser] = useState(null);
 
-  // Set default theme to light on component load
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      document.documentElement.setAttribute('data-theme', 'light');
-    }
-  }, []);
-
   // Dynamic user session tracker
   useEffect(() => {
     const loadUser = () => {

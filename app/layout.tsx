@@ -20,20 +20,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
-    <html lang="id" className={`${spaceGrotesk.variable} ${jetbrainsMono.variable}`}>
-      <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                try {
-                  document.documentElement.setAttribute('data-theme', 'light');
-                } catch (e) {}
-              })();
-            `
-          }}
-        />
-      </head>
+    <html lang="id" data-theme="light" className={`${spaceGrotesk.variable} ${jetbrainsMono.variable}`}>
+      <head />
       <body className="bg-theme-bg text-theme-text font-sans antialiased selection:bg-indigo-500/40 selection:text-white min-h-screen relative overflow-x-hidden transition-colors duration-300" suppressHydrationWarning>
         {/* Dynamic ambient background blur blobs optimized for light theme */}
         <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full bg-gradient-to-br from-indigo-500/5 to-purple-500/5 blur-[140px] pointer-events-none z-[-10]" />
