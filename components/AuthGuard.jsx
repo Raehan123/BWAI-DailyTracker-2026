@@ -189,10 +189,10 @@ export default function AuthGuard({ children }) {
 
   if (!mounted) {
     return (
-      <div className="min-h-screen bg-zinc-300 flex items-center justify-center font-mono">
-        <div className="border-4 border-black bg-white p-6 shadow-[6px_6px_0px_rgba(0,0,0,1)] flex items-center gap-3">
-          <div className="animate-spin h-5 w-5 border-4 border-black border-t-transparent"></div>
-          <span className="font-extrabold uppercase">Memuat Gerbang Autentikasi...</span>
+      <div className="min-h-screen bg-slate-950 flex items-center justify-center font-sans text-slate-100">
+        <div className="border border-white/10 bg-slate-900/60 backdrop-blur-xl p-6 rounded-2xl shadow-2xl flex items-center gap-3">
+          <div className="animate-spin h-5 w-5 border-2 border-indigo-500 border-t-transparent rounded-full"></div>
+          <span className="font-semibold text-xs tracking-wider uppercase text-slate-300">Memuat Gerbang Autentikasi...</span>
         </div>
       </div>
     );
@@ -205,38 +205,40 @@ export default function AuthGuard({ children }) {
 
   // Render Authentication Container
   return (
-    <div className="min-h-screen py-10 px-4 md:px-8 bg-zinc-300 flex items-center justify-center selection:bg-yellow-400 selection:text-black">
-      <div className="border-4 border-black bg-white p-6 md:p-8 max-w-md w-full shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] relative overflow-hidden flex flex-col gap-6">
-        {/* Background Grid Accent */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e7eb_1px,transparent_1px),linear-gradient(to_bottom,#e5e7eb_1px,transparent_1px)] bg-[size:16px_16px] opacity-40 pointer-events-none"></div>
+    <div className="min-h-screen py-10 px-4 md:px-8 bg-slate-950 flex items-center justify-center selection:bg-indigo-500/50 selection:text-white relative">
+      {/* Decorative Blur Background Circles */}
+      <div className="absolute top-[20%] left-[30%] w-[250px] h-[250px] bg-indigo-600/20 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute bottom-[20%] right-[30%] w-[250px] h-[250px] bg-purple-600/10 rounded-full blur-[100px] pointer-events-none" />
 
+      <div className="border border-white/10 bg-slate-900/40 backdrop-blur-xl p-6 md:p-8 max-w-md w-full shadow-[0_20px_50px_rgba(0,0,0,0.5)] rounded-3xl relative overflow-hidden flex flex-col gap-6">
+        
         {/* Brand Header */}
         <div className="relative z-10 text-center">
-          <span className="bg-blue-600 text-white text-[10px] font-bold uppercase border-2 border-black shadow-[2px_2px_0px_rgba(0,0,0,1)] px-2.5 py-0.5 inline-block mb-3">
+          <span className="bg-indigo-500/10 text-indigo-400 text-[10px] font-black uppercase tracking-widest border border-indigo-500/20 px-3 py-1 rounded-full inline-block mb-3 shadow-[0_0_15px_rgba(99,102,241,0.15)]">
             🔐 AUTH REQUIRED
           </span>
-          <h1 className="text-3xl md:text-4xl font-black uppercase tracking-tighter leading-none select-none">
+          <h1 className="text-3xl md:text-4xl font-extrabold uppercase tracking-tight text-white bg-gradient-to-r from-white via-slate-200 to-indigo-200 bg-clip-text text-transparent">
             Mindful Days
           </h1>
-          <p className="text-zinc-600 text-xs font-bold uppercase tracking-tight mt-1.5">
+          <p className="text-slate-400 text-xs font-medium tracking-wide mt-2">
             Satu-satunya Jurnal & Super App Harian Anda
           </p>
         </div>
 
-        {/* Inner Content Area */}
-        <div className="relative z-10 bg-zinc-100 border-4 border-black p-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+        {/* Inner Glass Card Content Area */}
+        <div className="relative z-10 bg-white/[0.03] border border-white/5 rounded-2xl p-5 shadow-inner">
           {/* Form Tabs */}
-          <div className="grid grid-cols-3 border-2 border-black bg-zinc-950 p-0.5 mb-4 gap-0.5">
+          <div className="grid grid-cols-3 bg-white/[0.04] border border-white/5 p-1 rounded-xl mb-5 gap-1">
             <button
               onClick={() => {
                 setAuthMode('login');
                 setErrorMsg('');
                 setSuccessMsg('');
               }}
-              className={`py-1.5 text-[10px] sm:text-xs font-black uppercase text-center cursor-pointer transition ${
+              className={`py-2 text-[10px] sm:text-xs font-bold tracking-wider uppercase text-center rounded-lg cursor-pointer transition-all duration-300 ${
                 authMode === 'login'
-                  ? 'bg-yellow-400 text-black border border-black shadow-[1.5px_1.5px_0px_rgba(0,0,0,1)]'
-                  : 'bg-zinc-850 text-zinc-400 hover:text-white'
+                  ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/20'
+                  : 'text-slate-400 hover:text-white hover:bg-white/5'
               }`}
             >
               LOGIN
@@ -247,10 +249,10 @@ export default function AuthGuard({ children }) {
                 setErrorMsg('');
                 setSuccessMsg('');
               }}
-              className={`py-1.5 text-[10px] sm:text-xs font-black uppercase text-center cursor-pointer transition ${
+              className={`py-2 text-[10px] sm:text-xs font-bold tracking-wider uppercase text-center rounded-lg cursor-pointer transition-all duration-300 ${
                 authMode === 'register'
-                  ? 'bg-yellow-400 text-black border border-black shadow-[1.5px_1.5px_0px_rgba(0,0,0,1)]'
-                  : 'bg-zinc-850 text-zinc-400 hover:text-white'
+                  ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/20'
+                  : 'text-slate-400 hover:text-white hover:bg-white/5'
               }`}
             >
               REGISTER
@@ -261,10 +263,10 @@ export default function AuthGuard({ children }) {
                 setErrorMsg('');
                 setSuccessMsg('');
               }}
-              className={`py-1.5 text-[10px] sm:text-xs font-black uppercase text-center cursor-pointer transition ${
+              className={`py-2 text-[10px] sm:text-xs font-bold tracking-wider uppercase text-center rounded-lg cursor-pointer transition-all duration-300 ${
                 authMode === 'forgot'
-                  ? 'bg-yellow-400 text-black border border-black shadow-[1.5px_1.5px_0px_rgba(0,0,0,1)]'
-                  : 'bg-zinc-850 text-zinc-400 hover:text-white'
+                  ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/20'
+                  : 'text-slate-400 hover:text-white hover:bg-white/5'
               }`}
             >
               FORGOT
@@ -273,19 +275,19 @@ export default function AuthGuard({ children }) {
 
           {/* Feedback Messages */}
           {errorMsg && (
-            <div className="mb-4 bg-red-400 text-black font-extrabold text-xs uppercase p-2.5 border-2 border-black shadow-[2px_2px_0px_rgba(0,0,0,1)] flex items-center gap-2">
-              <ShieldAlert size={16} className="shrink-0" />
+            <div className="mb-4 bg-rose-500/10 border border-rose-500/20 text-rose-300 font-semibold text-xs rounded-xl p-3 flex items-center gap-2.5 animate-pulse">
+              <ShieldAlert size={16} className="shrink-0 text-rose-400" />
               <span>{errorMsg}</span>
             </div>
           )}
 
           {successMsg && (
-            <div className="mb-4 bg-emerald-400 text-black font-extrabold text-xs uppercase p-2.5 border-2 border-black shadow-[2px_2px_0px_rgba(0,0,0,1)] flex flex-col gap-1">
-              <span className="flex items-center gap-2">
+            <div className="mb-4 bg-emerald-500/10 border border-emerald-500/25 text-emerald-300 font-semibold text-xs rounded-xl p-3 flex flex-col gap-1.5">
+              <span className="flex items-center gap-2 text-emerald-400">
                 <Sparkles size={16} className="shrink-0" />
-                <span>INFORMASI SISTEM:</span>
+                <span className="font-bold tracking-wider uppercase text-[10px]">INFORMASI SISTEM:</span>
               </span>
-              <p className="font-mono text-[11px] normal-case bg-white border border-black p-1.5 mt-1 font-semibold leading-relaxed">
+              <p className="font-mono text-[11px] normal-case bg-black/40 border border-white/5 p-2 rounded-lg leading-relaxed text-slate-200">
                 {successMsg}
               </p>
             </div>
@@ -293,14 +295,14 @@ export default function AuthGuard({ children }) {
 
           {/* Form: LOGIN */}
           {authMode === 'login' && (
-            <form onSubmit={handleLogin} className="flex flex-col gap-3 font-mono">
+            <form onSubmit={handleLogin} className="flex flex-col gap-4 font-sans">
               <div>
-                <label className="block text-[10px] font-black uppercase tracking-wider text-zinc-700 mb-1">
+                <label className="block text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-1.5">
                   📧 Alamat Email
                 </label>
                 <div className="relative">
-                  <span className="absolute left-2.5 top-2.5 text-black">
-                    <Mail size={14} />
+                  <span className="absolute left-3 top-3.5 text-slate-400">
+                    <Mail size={15} />
                   </span>
                   <input
                     type="email"
@@ -308,18 +310,18 @@ export default function AuthGuard({ children }) {
                     placeholder="nama@email.com"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full bg-white text-black border-2 border-black p-2 pl-9 text-xs shadow-[2px_2px_0px_rgba(0,0,0,1)] focus:outline-none"
+                    className="w-full bg-white/[0.04] border border-white/10 text-white placeholder-slate-500 p-3 pl-10 text-xs rounded-xl focus:border-indigo-500/50 focus:ring-2 focus:ring-indigo-500/10 focus:outline-none transition-all duration-300"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-[10px] font-black uppercase tracking-wider text-zinc-700 mb-1">
+                <label className="block text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-1.5">
                   🔑 Kata Sandi / Password
                 </label>
                 <div className="relative">
-                  <span className="absolute left-2.5 top-2.5 text-black">
-                    <Key size={14} />
+                  <span className="absolute left-3 top-3.5 text-slate-400">
+                    <Key size={15} />
                   </span>
                   <input
                     type={showPassword ? 'text' : 'password'}
@@ -327,30 +329,30 @@ export default function AuthGuard({ children }) {
                     placeholder="••••••"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="w-full bg-white text-black border-2 border-black p-2 pl-9 pr-9 text-xs shadow-[2px_2px_0px_rgba(0,0,0,1)] focus:outline-none"
+                    className="w-full bg-white/[0.04] border border-white/10 text-white placeholder-slate-500 p-3 pl-10 pr-10 text-xs rounded-xl focus:border-indigo-500/50 focus:ring-2 focus:ring-indigo-500/10 focus:outline-none transition-all duration-300"
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-2.5 top-2.5 hover:text-blue-600 transition cursor-pointer text-black"
+                    className="absolute right-3 top-3.5 hover:text-indigo-400 transition cursor-pointer text-slate-400"
                   >
-                    {showPassword ? <EyeOff size={14} /> : <Eye size={14} />}
+                    {showPassword ? <EyeOff size={15} /> : <Eye size={15} />}
                   </button>
                 </div>
               </div>
 
               <button
                 type="submit"
-                className="w-full border-3 border-black bg-blue-600 text-white font-black uppercase py-2.5 text-xs tracking-wider shadow-[3px_3px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_rgba(0,0,0,1)] active:translate-x-[2px] active:translate-y-[2px] active:shadow-[1px_1px_0px_rgba(0,0,0,1)] transition cursor-pointer mt-2"
+                className="w-full bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white font-bold uppercase py-3 text-xs tracking-wider rounded-xl shadow-lg shadow-indigo-600/20 active:scale-[0.98] transition-all cursor-pointer mt-2"
               >
-                MASUK SEKARANG <ArrowRight size={12} className="inline ml-1" />
+                MASUK SEKARANG <ArrowRight size={13} className="inline ml-1" />
               </button>
 
-              <div className="border-t-2 border-black border-dashed pt-3 mt-1 text-center">
+              <div className="border-t border-white/10 pt-4 mt-2 text-center">
                 <button
                   type="button"
                   onClick={handleDemoLogin}
-                  className="bg-zinc-950 text-yellow-400 border-2 border-black p-1.5 px-3 uppercase text-[9px] font-black cursor-pointer shadow-[2px_2px_0px_rgba(0,0,0,1)] hover:bg-zinc-900"
+                  className="bg-white/[0.04] border border-white/10 hover:bg-white/[0.08] text-indigo-300 p-2 px-4 uppercase text-[10px] font-bold rounded-lg cursor-pointer transition-all duration-200 shadow-sm"
                 >
                   ⚡ GUNAKAN KUNCI DEMO INSTAN
                 </button>
@@ -360,14 +362,14 @@ export default function AuthGuard({ children }) {
 
           {/* Form: REGISTER */}
           {authMode === 'register' && (
-            <form onSubmit={handleRegister} className="flex flex-col gap-3 font-mono">
+            <form onSubmit={handleRegister} className="flex flex-col gap-4 font-sans">
               <div>
-                <label className="block text-[10px] font-black uppercase tracking-wider text-zinc-700 mb-1">
+                <label className="block text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-1.5">
                   👤 Nama Lengkap Anda
                 </label>
                 <div className="relative">
-                  <span className="absolute left-2.5 top-2.5 text-black">
-                    <User size={14} />
+                  <span className="absolute left-3 top-3.5 text-slate-400">
+                    <User size={15} />
                   </span>
                   <input
                     type="text"
@@ -375,18 +377,18 @@ export default function AuthGuard({ children }) {
                     placeholder="cth. Neo Rayhan"
                     value={fullName}
                     onChange={(e) => setFullName(e.target.value)}
-                    className="w-full bg-white text-black border-2 border-black p-2 pl-9 text-xs shadow-[2px_2px_0px_rgba(0,0,0,1)] focus:outline-none"
+                    className="w-full bg-white/[0.04] border border-white/10 text-white placeholder-slate-500 p-3 pl-10 text-xs rounded-xl focus:border-indigo-500/50 focus:ring-2 focus:ring-indigo-500/10 focus:outline-none transition-all duration-300"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-[10px] font-black uppercase tracking-wider text-zinc-700 mb-1">
+                <label className="block text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-1.5">
                   📧 Alamat Email Baru
                 </label>
                 <div className="relative">
-                  <span className="absolute left-2.5 top-2.5 text-black">
-                    <Mail size={14} />
+                  <span className="absolute left-3 top-3.5 text-slate-400">
+                    <Mail size={15} />
                   </span>
                   <input
                     type="email"
@@ -394,87 +396,88 @@ export default function AuthGuard({ children }) {
                     placeholder="nama@email.com"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full bg-white text-black border-2 border-black p-2 pl-9 text-xs shadow-[2px_2px_0px_rgba(0,0,0,1)] focus:outline-none"
+                    className="w-full bg-white/[0.04] border border-white/10 text-white placeholder-slate-500 p-3 pl-10 text-xs rounded-xl focus:border-indigo-500/50 focus:ring-2 focus:ring-indigo-500/10 focus:outline-none transition-all duration-300"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-[10px] font-black uppercase tracking-wider text-zinc-700 mb-1">
+                <label className="block text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-1.5">
                   🔑 Buat Kata Sandi (min. 6)
                 </label>
                 <div className="relative">
-                  <span className="absolute left-2.5 top-2.5 text-black">
-                    <Key size={14} />
+                  <span className="absolute left-3 top-3.5 text-slate-400">
+                    <Key size={15} />
                   </span>
                   <input
                     type={showPassword ? 'text' : 'password'}
                     required
-                    placeholder="Buat sandi rumit..."
+                    placeholder="Sandi minimal 6 huruf..."
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="w-full bg-white text-black border-2 border-black p-2 pl-9 text-xs shadow-[2px_2px_0px_rgba(0,0,0,1)] focus:outline-none"
+                    className="w-full bg-white/[0.04] border border-white/10 text-white placeholder-slate-500 p-3 pl-10 text-xs rounded-xl focus:border-indigo-500/50 focus:ring-2 focus:ring-indigo-500/10 focus:outline-none transition-all duration-300"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-[10px] font-black uppercase tracking-wider text-zinc-700 mb-1">
+                <label className="block text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-1.5">
                   🔁 Konfirmasi Kata Sandi
                 </label>
                 <div className="relative">
-                  <span className="absolute left-2.5 top-2.5 text-black">
-                    <Key size={14} />
+                  <span className="absolute left-3 top-3.5 text-slate-400">
+                    <Key size={15} />
                   </span>
                   <input
                     type="password"
                     required
-                    placeholder="Ketik ulang sandi..."
+                    placeholder="Ketik kembali sandi..."
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
-                    className="w-full bg-white text-black border-2 border-black p-2 pl-9 text-xs shadow-[2px_2px_0px_rgba(0,0,0,1)] focus:outline-none"
+                    className="w-full bg-white/[0.04] border border-white/10 text-white placeholder-slate-500 p-3 pl-10 text-xs rounded-xl focus:border-indigo-500/50 focus:ring-2 focus:ring-indigo-500/10 focus:outline-none transition-all duration-300"
                   />
                 </div>
               </div>
 
               <button
                 type="submit"
-                className="w-full border-3 border-black bg-emerald-500 text-black font-black uppercase py-2.5 text-xs tracking-wider shadow-[3px_3px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_rgba(0,0,0,1)] active:translate-x-[2px] active:translate-y-[2px] transition cursor-pointer mt-2"
+                className="w-full bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold uppercase py-3 text-xs tracking-wider rounded-xl shadow-lg shadow-emerald-600/10 active:scale-[0.98] transition-all cursor-pointer mt-2 flex items-center justify-center gap-2"
               >
-                DAFTAR AKUN BARU <CornerDownLeft size={12} className="inline ml-1" />
+                <span>DAFTAR AKUN BARU</span>
+                <CornerDownLeft size={13} className="shrink-0" />
               </button>
             </form>
           )}
 
           {/* Form: FORGOT PASSWORD */}
           {authMode === 'forgot' && (
-            <form onSubmit={handleForgotPassword} className="flex flex-col gap-3 font-mono">
-              <p className="text-[10px] leading-tight text-neutral-800 bg-amber-200 border border-black p-2 rounded-none mb-1">
-                ℹ️ Masukkan email terdaftar Anda untuk melihat password secara instan.
+            <form onSubmit={handleForgotPassword} className="flex flex-col gap-4 font-sans">
+              <p className="text-[10px] leading-relaxed text-yellow-200 bg-yellow-500/10 border border-yellow-500/20 p-3 rounded-xl mb-1">
+                ℹ️ Masukkan email terdaftar Anda untuk melihat password secara instan demi kemudahan demo Anda.
               </p>
 
               <div>
-                <label className="block text-[10px] font-black uppercase tracking-wider text-zinc-700 mb-1">
+                <label className="block text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-1.5">
                   📧 Alamat Email Anda
                 </label>
                 <div className="relative">
-                  <span className="absolute left-2.5 top-2.5 text-black">
-                    <Mail size={14} />
+                  <span className="absolute left-3 top-3.5 text-slate-400">
+                    <Mail size={15} />
                   </span>
                   <input
                     type="email"
                     required
-                    placeholder="Email yang mau dilacak..."
+                    placeholder="Email terdaftar..."
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full bg-white text-black border-2 border-black p-2 pl-9 text-xs shadow-[2px_2px_0px_rgba(0,0,0,1)] focus:outline-none"
+                    className="w-full bg-white/[0.04] border border-white/10 text-white placeholder-slate-500 p-3 pl-10 text-xs rounded-xl focus:border-indigo-500/50 focus:ring-2 focus:ring-indigo-500/10 focus:outline-none transition-all duration-300"
                   />
                 </div>
               </div>
 
               <button
                 type="submit"
-                className="w-full border-3 border-black bg-zinc-950 text-white font-black uppercase py-2.5 text-xs tracking-wider shadow-[3px_3px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_rgba(0,0,0,1)] active:translate-x-[2px] active:translate-y-[2px] transition cursor-pointer mt-2"
+                className="w-full bg-gradient-to-r from-slate-200 to-slate-350 hover:from-white hover:to-slate-200 text-slate-950 font-bold uppercase py-3 text-xs tracking-wider rounded-xl shadow-lg active:scale-[0.98] transition-all cursor-pointer mt-2"
               >
                 PULIHKAN SANDI SEKARANG
               </button>
@@ -483,8 +486,8 @@ export default function AuthGuard({ children }) {
         </div>
 
         {/* System Credits Footing */}
-        <div className="relative z-10 text-center font-mono text-[9px] text-zinc-500">
-          Mindful Days v1.5.0 • Powered by Retro Engine
+        <div className="relative z-10 text-center font-mono text-[9px] text-slate-500 tracking-wider">
+          Mindful Days v1.5.0 • Powered by Glassmorphic Engine
         </div>
       </div>
     </div>

@@ -116,47 +116,47 @@ export default function TransactionsPage() {
 
   if (!mounted) {
     return (
-      <div className="min-h-screen bg-zinc-300 flex items-center justify-center font-mono">
-        <div className="border-4 border-black bg-white p-6 shadow-[6px_6px_0px_rgba(0,0,0,1)] flex items-center gap-3">
-          <div className="animate-spin h-5 w-5 border-4 border-black border-t-transparent"></div>
-          <span className="font-extrabold uppercase">Loading Retro Engine...</span>
+      <div className="min-h-screen bg-slate-950 flex items-center justify-center font-sans text-slate-100">
+        <div className="border border-white/10 bg-slate-900/60 backdrop-blur-xl p-6 rounded-2xl shadow-2xl flex items-center gap-3">
+          <div className="animate-spin h-5 w-5 border-2 border-indigo-500 border-t-transparent rounded-full"></div>
+          <span className="font-semibold text-xs tracking-wider uppercase text-slate-300">Loading Digital Engine...</span>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen p-4 md:p-8 max-w-7xl mx-auto selection:bg-yellow-400 selection:text-black flex flex-col gap-6">
+    <div className="min-h-screen p-4 md:p-8 max-w-7xl mx-auto selection:bg-indigo-500/40 selection:text-white flex flex-col gap-6 relative z-10">
       <HeaderAndNav />
 
       {/* BALANCE STATS GRID (Hero block) */}
-      <section className="grid grid-cols-1 md:grid-cols-3 border-4 border-black divide-y-4 md:divide-y-0 md:divide-x-4 divide-black bg-white shadow-[6px_6px_0px_rgba(0,0,0,1)] text-center font-mono uppercase">
+      <section className="grid grid-cols-1 md:grid-cols-3 border border-white/10 divide-y md:divide-y-0 md:divide-x divide-white/5 bg-slate-900/[0.25] backdrop-blur-xl rounded-2xl overflow-hidden shadow-[0_8px_32px_0_rgba(0,0,0,0.2)] text-center font-sans uppercase">
         {/* Balances */}
-        <div className="p-4 bg-yellow-400 flex flex-col justify-center items-center">
-          <span className="text-[10px] font-black text-black flex items-center gap-1">
-            <Coins size={12} /> CURRENT STASH BALANCE
+        <div className="p-5 flex flex-col justify-center items-center bg-white/[0.01] hover:bg-white/[0.02] transition duration-300">
+          <span className="text-[10px] font-bold text-slate-400 flex items-center gap-1.5">
+            <Coins size={13} className="text-indigo-400" /> CURRENT STASH BALANCE
           </span>
-          <span className="text-xl md:text-3xl font-black mt-1 text-black">
+          <span className="text-xl md:text-2xl font-bold mt-1 text-slate-100">
             Rp {currentBalance.toLocaleString('id-ID')}
           </span>
         </div>
 
         {/* Total In */}
-        <div className="p-4 bg-emerald-300 flex flex-col justify-center items-center">
-          <span className="text-[10px] font-black text-emerald-900 flex items-center gap-1">
-            <TrendingUp size={12} /> TOTAL CASH INFLOW
+        <div className="p-5 flex flex-col justify-center items-center bg-white/[0.01] hover:bg-white/[0.02] transition duration-300">
+          <span className="text-[10px] font-bold text-slate-400 flex items-center gap-1.5">
+            <TrendingUp size={13} className="text-emerald-400" /> TOTAL CASH INFLOW
           </span>
-          <span className="text-lg md:text-2xl font-black mt-1 text-emerald-950">
+          <span className="text-lg md:text-xl font-bold mt-1 text-emerald-400">
             + Rp {totalIncome.toLocaleString('id-ID')}
           </span>
         </div>
 
         {/* Total Out */}
-        <div className="p-4 bg-red-300 flex flex-col justify-center items-center">
-          <span className="text-[10px] font-black text-red-900 flex items-center gap-1">
-            <TrendingDown size={12} /> TOTAL OUTFLOW
+        <div className="p-5 flex flex-col justify-center items-center bg-white/[0.01] hover:bg-white/[0.02] transition duration-300">
+          <span className="text-[10px] font-bold text-slate-400 flex items-center gap-1.5">
+            <TrendingDown size={13} className="text-rose-450" /> TOTAL OUTFLOW
           </span>
-          <span className="text-lg md:text-2xl font-black mt-1 text-red-950">
+          <span className="text-lg md:text-xl font-bold mt-1 text-rose-400">
             - Rp {totalExpense.toLocaleString('id-ID')}
           </span>
         </div>
@@ -164,13 +164,13 @@ export default function TransactionsPage() {
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
         {/* LEFT COLUMN: ADD TRANSACTION FORM */}
-        <section className="lg:col-span-4 border-4 border-black bg-white shadow-[6px_6px_0px_rgba(0,0,0,1)] flex flex-col">
-          <div className="bg-blue-600 text-white p-4 border-b-4 border-black flex items-center gap-2">
-            <Sparkles size={16} className="text-yellow-400 shrink-0" />
-            <h2 className="text-sm font-black uppercase italic tracking-tight">Post Cash Record</h2>
+        <section className="lg:col-span-4 border border-white/10 bg-slate-900/[0.25] backdrop-blur-xl rounded-3xl overflow-hidden flex flex-col shadow-[0_8px_32px_0_rgba(0,0,0,0.2)]">
+          <div className="bg-white/[0.04] text-white p-4 border-b border-white/10 flex items-center gap-2">
+            <Sparkles size={16} className="text-indigo-400 shrink-0" />
+            <h2 className="text-sm font-bold uppercase tracking-wider">Post Cash Record</h2>
           </div>
 
-          <form onSubmit={handleAddTransaction} className="p-4 space-y-4 bg-zinc-100">
+          <form onSubmit={handleAddTransaction} className="p-5 space-y-4 bg-transparent">
             {/* Type selector */}
             <div className="grid grid-cols-2 gap-2">
               <button
@@ -179,10 +179,10 @@ export default function TransactionsPage() {
                   playSound('click', soundEnabled);
                   setTransType('expense');
                 }}
-                className={`py-2 text-[10px] font-black uppercase tracking-wider border-2 border-black transition-all ${
+                className={`py-2 text-[10px] font-bold uppercase tracking-wider border rounded-xl transition duration-300 ${
                   transType === 'expense'
-                    ? 'bg-red-500 text-white shadow-[2px_2px_0px_rgba(0,0,0,1)]'
-                    : 'bg-white text-zinc-500 hover:text-black'
+                    ? 'bg-rose-500/20 text-rose-300 border-rose-500/30 font-bold shadow-sm'
+                    : 'bg-white/[0.02] border-white/5 text-slate-400'
                 }`}
               >
                 💸 EXPENSE (-)
@@ -193,10 +193,10 @@ export default function TransactionsPage() {
                   playSound('click', soundEnabled);
                   setTransType('income');
                 }}
-                className={`py-2 text-[10px] font-black uppercase tracking-wider border-2 border-black transition-all ${
+                className={`py-2 text-[10px] font-bold uppercase tracking-wider border rounded-xl transition duration-300 ${
                   transType === 'income'
-                    ? 'bg-green-500 text-black shadow-[2px_2px_0px_rgba(0,0,0,1)]'
-                    : 'bg-white text-zinc-500 hover:text-black'
+                    ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30 font-bold shadow-sm'
+                    : 'bg-white/[0.02] border-white/5 text-slate-400'
                 }`}
               >
                 💰 INCOME (+)
@@ -204,7 +204,7 @@ export default function TransactionsPage() {
             </div>
 
             <div>
-              <label className="block text-[10px] font-black uppercase tracking-wider text-zinc-700 mb-1 font-mono">
+              <label className="block text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-1.5">
                 📝 Deskripsi Transaksi
               </label>
               <input
@@ -213,13 +213,13 @@ export default function TransactionsPage() {
                 placeholder="Contoh: Honor ngerjain landing page..."
                 value={transText}
                 onChange={(e) => setTransText(e.target.value)}
-                className="w-full bg-white text-black border-2 border-black p-2 font-mono text-xs shadow-[2px_2px_0px_rgba(0,0,0,1)] focus:outline-none"
+                className="w-full bg-white/[0.04] border border-white/10 text-white placeholder-slate-500 p-2.5 text-xs rounded-xl focus:border-indigo-500/50 focus:ring-2 focus:ring-indigo-500/10 focus:outline-none transition-all duration-300"
               />
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
               <div>
-                <label className="block text-[10px] font-black uppercase tracking-wider text-zinc-700 mb-1 font-mono">
+                <label className="block text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-1.5">
                   💰 Jumlah (IDR)
                 </label>
                 <input
@@ -229,18 +229,18 @@ export default function TransactionsPage() {
                   placeholder="e.g. 50000"
                   value={transAmount}
                   onChange={(e) => setTransAmount(e.target.value)}
-                  className="w-full bg-white text-black border-2 border-black p-2 font-mono text-xs shadow-[2px_2px_0px_rgba(0,0,0,1)] focus:outline-none"
+                  className="w-full bg-white/[0.04] border border-white/10 text-white placeholder-slate-500 p-2.5 text-xs rounded-xl focus:border-indigo-500/50 focus:ring-2 focus:ring-indigo-500/10 focus:outline-none transition-all duration-300"
                 />
               </div>
 
               <div>
-                <label className="block text-[10px] font-black uppercase tracking-wider text-zinc-700 mb-1 font-mono">
+                <label className="block text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-1.5">
                   🏷️ Kategori
                 </label>
                 <select
                   value={transCategory}
                   onChange={(e) => setTransCategory(e.target.value)}
-                  className="w-full bg-white text-black border-2 border-black p-2 font-mono text-xs font-bold shadow-[2px_2px_0px_rgba(0,0,0,1)] focus:outline-none"
+                  className="w-full bg-slate-900 border border-white/10 text-white p-2.5 text-xs font-bold rounded-xl focus:border-indigo-500/50 focus:outline-none focus:ring-2 focus:ring-indigo-500/10 transition-all duration-300"
                 >
                   <option value="Jajan">🍔 Jajan</option>
                   <option value="Project">💼 Project</option>
@@ -253,7 +253,7 @@ export default function TransactionsPage() {
 
             <button
               type="submit"
-              className="w-full border-3 border-black bg-blue-600 text-white font-black uppercase py-3 text-xs tracking-wider shadow-[3px_3px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_rgba(0,0,0,1)] hover:bg-blue-650 transition cursor-pointer"
+              className="w-full bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white font-bold uppercase py-3 text-xs tracking-wider rounded-xl shadow-lg shadow-indigo-600/10 active:scale-[0.98] transition-all cursor-pointer mt-1"
             >
               🧾 CATAT BUKU ARUS KAS
             </button>
@@ -261,16 +261,16 @@ export default function TransactionsPage() {
         </section>
 
         {/* RIGHT COLUMN: DETAILED TRANSACTIONS LIST */}
-        <section className="lg:col-span-8 border-4 border-black bg-white shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] flex flex-col font-mono text-xs">
-          <div className="bg-zinc-950 text-white p-4 border-b-4 border-black flex items-center justify-between">
+        <section className="lg:col-span-8 border border-white/10 bg-slate-900/[0.25] backdrop-blur-xl rounded-3xl overflow-hidden flex flex-col shadow-[0_8px_32px_0_rgba(0,0,0,0.2)]">
+          <div className="bg-white/[0.04] text-white p-4 border-b border-white/10 flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <CreditCard size={18} className="text-yellow-400 shrink-0" />
-              <h2 className="text-sm font-black uppercase italic tracking-tight">Main Ledger entries ({transactions.length})</h2>
+              <CreditCard size={18} className="text-indigo-400 shrink-0" />
+              <h2 className="text-sm font-bold uppercase tracking-wider">Main Ledger Entries ({transactions.length})</h2>
             </div>
             {transactions.length > 0 && (
               <button
                 onClick={handleClearLedger}
-                className="bg-red-500 text-white hover:bg-red-600 px-2.5 py-1 border border-black font-bold uppercase text-[9px] shadow-[1px_1px_0px_rgba(255,255,255,1)] cursor-pointer"
+                className="bg-rose-500/10 hover:bg-rose-500/15 text-rose-300 border border-rose-500/20 px-3.5 py-1.5 rounded-lg font-bold uppercase text-[9px] tracking-wide transition-all cursor-pointer shadow-sm"
               >
                 Reset Ledger
               </button>
@@ -278,21 +278,21 @@ export default function TransactionsPage() {
           </div>
 
           {/* Search Table Toolbar */}
-          <div className="p-3 border-b-3 border-black bg-zinc-50 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div className="p-4 border-b border-white/10 bg-white/[0.01] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div className="relative w-full sm:w-64">
               <input
                 type="text"
                 placeholder="Cari transaksi..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="bg-white border-2 border-black p-1.5 px-3 pl-8 text-[11px] font-mono shadow-[2px_2px_0px_rgba(0,0,0,1)] focus:outline-none w-full"
+                className="bg-white/[0.04] border border-white/10 text-white placeholder-slate-500 p-2.5 pl-9 text-xs rounded-xl focus:border-indigo-500/50 focus:ring-2 focus:ring-indigo-500/10 focus:outline-none transition-all duration-300 w-full shadow-sm"
               />
-              <Search size={12} className="absolute left-2.5 top-2.5 text-zinc-500" />
+              <Search size={12} className="absolute left-3 top-3.5 text-slate-500" />
             </div>
 
             {/* Category selection */}
-            <div className="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0">
-              <span className="text-[10px] font-bold uppercase text-zinc-500 mr-1 flex items-center gap-0.5">
+            <div className="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0 font-sans">
+              <span className="text-[10px] font-bold uppercase text-slate-400 mr-2 flex items-center gap-0.5">
                 <Filter size={10} /> Cat:
               </span>
               {categories.map((cat) => (
@@ -302,10 +302,10 @@ export default function TransactionsPage() {
                     playSound('click', soundEnabled);
                     setSelectedCategory(cat);
                   }}
-                  className={`px-2 py-0.5 border border-black uppercase text-[9px] font-bold cursor-pointer shrink-0 ${
+                  className={`px-3 py-1.5 rounded-lg border uppercase text-[9px] font-bold tracking-wider cursor-pointer shrink-0 transition-all duration-200 ${
                     selectedCategory === cat
-                      ? 'bg-blue-600 text-white'
-                      : 'bg-zinc-100 text-zinc-700 hover:bg-zinc-200'
+                      ? 'bg-indigo-600/20 text-indigo-300 border-indigo-500/40 shadow-sm'
+                      : 'bg-transparent border-white/10 text-slate-400 hover:text-white hover:bg-white/5'
                   }`}
                 >
                   {cat === 'ALL' ? 'ALL' : cat}
@@ -315,29 +315,29 @@ export default function TransactionsPage() {
           </div>
 
           {/* Transactions List */}
-          <div className="p-4 bg-zinc-100 min-h-[350px] space-y-2 max-h-[500px] overflow-y-auto">
+          <div className="p-5 bg-transparent min-h-[350px] space-y-3 max-h-[500px] overflow-y-auto">
             {filteredTransactions.length === 0 ? (
-              <div className="text-center py-12 border-4 border-dashed border-zinc-400 bg-white">
-                <p className="text-xs text-zinc-500 font-bold uppercase">LEDGER TRANSAKSI KOSONG / TIDAK DITEMUKAN 📊</p>
+              <div className="text-center py-12 border border-dashed border-white/15 bg-white/[0.01] rounded-2xl">
+                <p className="text-xs font-semibold text-slate-450 uppercase tracking-widest">LEDGER TRANSAKSI KOSONG / TIDAK DITEMUKAN 📊</p>
               </div>
             ) : (
               filteredTransactions.map((tr) => (
                 <div
                   key={tr.id}
-                  className="border-2 border-black p-3 bg-white flex justify-between items-center shadow-[2px_2px_0px_rgba(0,0,0,1)] hover:bg-zinc-55"
+                  className="border border-white/5 p-4 bg-white/[0.02] hover:bg-white/[0.04] hover:border-white/10 rounded-2xl flex justify-between items-center transition duration-300 shadow-sm"
                 >
                   <div className="flex items-center gap-3">
                     <span
-                      className={`w-8 h-8 rounded-none border-2 border-black flex items-center justify-center text-xs font-black shrink-0 ${
-                        tr.type === 'income' ? 'bg-green-400 text-black' : 'bg-red-400 text-white'
+                      className={`w-8 h-8 rounded-lg border flex items-center justify-center text-[10px] font-black shrink-0 ${
+                        tr.type === 'income' ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-300' : 'bg-rose-500/15 border-rose-500/20 text-rose-300'
                       }`}
                     >
                       {tr.type === 'income' ? 'IN' : 'OT'}
                     </span>
 
                     <div className="flex flex-col">
-                      <span className="text-xs font-bold text-neutral-900 leading-tight">{tr.text}</span>
-                      <span className="text-[9px] bg-zinc-200 border border-zinc-400 px-1 py-0.2 self-start font-black mt-0.5 text-black uppercase">
+                      <span className="text-xs font-bold text-slate-100 leading-tight">{tr.text}</span>
+                      <span className="text-[8px] bg-white/5 border border-white/5 rounded px-2 py-0.5 self-start font-bold mt-1 text-slate-400 uppercase tracking-wide">
                         {tr.category}
                       </span>
                     </div>
@@ -345,15 +345,15 @@ export default function TransactionsPage() {
 
                   <div className="flex items-center gap-3">
                     <span
-                      className={`text-xs md:text-sm font-black ${
-                        tr.type === 'income' ? 'text-green-700 font-extrabold' : 'text-red-700 font-extrabold'
+                      className={`text-xs md:text-sm font-bold ${
+                        tr.type === 'income' ? 'text-emerald-400' : 'text-rose-450'
                       }`}
                     >
                       {tr.type === 'income' ? '+' : '-'} Rp{Math.abs(tr.amount).toLocaleString('id-ID')}
                     </span>
                     <button
                       onClick={() => handleDeleteTransaction(tr.id)}
-                      className="p-1 px-1.5 border border-black bg-zinc-900 text-white hover:bg-red-500 hover:text-white cursor-pointer transition"
+                      className="p-1.5 border border-white/10 hover:border-rose-500/30 rounded-lg hover:bg-rose-500/10 text-slate-400 hover:text-rose-400 transition cursor-pointer shrink-0"
                       title="Hapus"
                     >
                       <Trash2 size={11} />

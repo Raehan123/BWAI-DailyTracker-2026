@@ -1,1 +1,255 @@
 @import "tailwindcss";
+
+:root {
+  /* Exclusive Light Theme Core Variables */
+  --color-theme-bg: #f8fafc; /* Premium off-white slate-50 */
+  --color-theme-text: #0f172a; /* Deep charcoal slate-900 */
+  --color-theme-muted: #334155; /* Solid dark slate-700 for extremely clear readability */
+  --color-theme-border-gray: #cbd5e1; /* Clear slate-300 borders */
+  
+  /* Glassmorphic Components */
+  --color-theme-card: rgba(255, 255, 255, 0.95); /* Bright rich white glass */
+  --color-theme-card-border: rgba(148, 163, 184, 0.25); /* Sharp crisp slate border */
+  --color-theme-header-bg: rgba(255, 255, 255, 0.85);
+  
+  --color-theme-item-bg: rgba(241, 245, 249, 0.7); /* Soft rounded row background */
+  --color-theme-item-bg-hover: rgba(241, 245, 249, 0.95);
+  --color-theme-item-border: rgba(148, 163, 184, 0.2);
+  --color-theme-item-border-hover: rgba(148, 163, 184, 0.35);
+  
+  /* Inputs / Selects */
+  --color-theme-input: #ffffff;
+  --color-theme-input-border: rgba(148, 163, 184, 0.35);
+  --color-theme-dropdown: #ffffff;
+  
+  /* Shadows */
+  --shadow-theme-shadow: 0 10px 40px -10px rgba(148, 163, 184, 0.15);
+}
+
+/* ==========================================================================
+   EXCLUSIVE LIGHT THEME CORE SYSTEM MAPS
+   ========================================================================== */
+
+/* Universal light background and text reset */
+html, body {
+  background-color: var(--color-theme-bg) !important;
+  color: var(--color-theme-text) !important;
+}
+
+/* Redefine Tailwind's local utility variables to ensure a beautiful light palette */
+body, body * {
+  --color-slate-950: var(--color-theme-bg);
+  --color-slate-900: var(--color-theme-card);
+  --color-slate-100: var(--color-theme-text);
+  --color-slate-200: var(--color-theme-text);
+  --color-slate-300: var(--color-theme-text);
+  --color-slate-400: var(--color-theme-muted);
+  --color-slate-450: var(--color-theme-muted);
+  --color-slate-500: var(--color-theme-muted);
+}
+
+/* Force dark container background replacements into elegant bright structures */
+.bg-slate-950 {
+  background-color: var(--color-theme-bg) !important;
+}
+
+/* Standardize text accessibility classes to keep all texts highly visible */
+.text-slate-100,
+.text-slate-200,
+.text-slate-300,
+.text-slate-400,
+.text-slate-450,
+.text-slate-500 {
+  color: var(--color-theme-text) !important;
+}
+
+/* High contrast colored texts system */
+.text-indigo-300,
+.text-indigo-400 {
+  color: #3730a3 !important; /* Indigo-800 for high visibility */
+}
+
+.text-violet-300,
+.text-violet-400 {
+  color: #5b21b6 !important; /* Violet-800 */
+}
+
+.text-rose-300,
+.text-rose-400,
+.text-rose-450,
+.text-red-300,
+.text-red-400 {
+  color: #9f1239 !important; /* Rose-800 */
+}
+
+.text-emerald-300,
+.text-emerald-400,
+.text-teal-300,
+.text-teal-400,
+.text-green-300 {
+  color: #065f46 !important; /* Emerald-800 */
+}
+
+.text-orange-300,
+.text-orange-400,
+.text-amber-350,
+.text-amber-400 {
+  color: #9a3412 !important; /* Orange-800 */
+}
+
+.text-indigo-200 {
+  color: #4338ca !important; /* Indigo-700 */
+}
+
+/* Glassmorphic structural panels */
+.bg-slate-900\/\[0\.25\] {
+  background-color: var(--color-theme-card) !important;
+  backdrop-filter: blur(24px) !important;
+  -webkit-backdrop-filter: blur(24px) !important;
+  border: 1px solid var(--color-theme-card-border) !important;
+}
+
+.bg-slate-900\/40,
+.bg-slate-900\/60 {
+  background-color: var(--color-theme-card) !important;
+  backdrop-filter: blur(24px) !important;
+  border: 1px solid var(--color-theme-card-border) !important;
+}
+
+.bg-slate-900 {
+  background-color: var(--color-theme-dropdown) !important;
+  color: var(--color-theme-text) !important;
+  border-color: var(--color-theme-card-border) !important;
+}
+
+/* Border overrides - sharp, subtle, visible dividers */
+.border-white\/10 {
+  border-color: var(--color-theme-card-border) !important;
+}
+
+.border-white\/15,
+.border-white\/20 {
+  border-color: var(--color-theme-border-gray) !important;
+}
+
+.border-white\/5 {
+  border-color: var(--color-theme-item-border) !important;
+}
+
+/* Neutral input and indicator elements */
+.bg-white\/\[0\.04\] {
+  background-color: var(--color-theme-input) !important;
+}
+
+.bg-white\/\[0\.03\] {
+  background-color: var(--color-theme-item-bg) !important;
+}
+
+.bg-white\/\[0\.02\] {
+  background-color: var(--color-theme-item-bg) !important;
+}
+
+.bg-white\/\[0\.01\] {
+  background-color: rgba(241, 245, 249, 0.45) !important;
+}
+
+/* Better visible slate separators/progress-bar channels */
+.bg-white\/5,
+.bg-white\/10 {
+  background-color: rgba(148, 163, 184, 0.25) !important;
+}
+
+.bg-black\/20,
+.bg-black\/40 {
+  background-color: rgba(148, 163, 184, 0.12) !important;
+}
+
+.divide-white\/5 > :not([hidden]) ~ :not([hidden]) {
+  border-color: var(--color-theme-item-border) !important;
+}
+
+/* Perfect Placeholder & Inputs Styling */
+input::placeholder,
+textarea::placeholder {
+  color: #64748b !important; /* Darker Slate-500 placeholder for accessibility */
+}
+
+input, textarea, select {
+  color: var(--color-theme-text) !important;
+  background-color: var(--color-theme-input) !important;
+  border: 1px solid var(--color-theme-input-border) !important;
+}
+
+select option {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+}
+
+/* ==========================================================================
+   SMART TEXT-WHITE AND BUTTONS CONTRAST MATRIX
+   ========================================================================== */
+
+/* 1. By default, standalone classes using .text-white when in panels should be readable deep dark slate */
+section .text-white,
+header .text-white,
+div[id$="-console"] .text-white,
+main .text-white,
+form .text-white,
+input.text-white,
+select.text-white,
+textarea.text-white,
+span.text-slate-100,
+span.text-slate-200,
+span.text-slate-300,
+div.text-slate-200,
+div.text-slate-300 {
+  color: var(--color-theme-text) !important;
+}
+
+/* 2. BUT text on filled, solid CTA backgrounds or active navigation tabs must remain pure, crisp white */
+.bg-indigo-600,
+.bg-indigo-600 *,
+.bg-violet-600,
+.bg-violet-600 *,
+.bg-emerald-600,
+.bg-emerald-600 *,
+.bg-rose-600,
+.bg-rose-600 *,
+button[type="submit"],
+button[type="submit"] *,
+[class*="from-indigo-600"] *,
+[class*="from-violet-600"] *,
+[class*="from-emerald-600"] *,
+[class*="from-[red-500]"] *,
+[class*="from-rose-600"] * {
+  color: #ffffff !important;
+}
+
+/* Ensure icons on solid buttons are also crisp white */
+.bg-indigo-600 svg,
+button[type="submit"] svg,
+[class*="from-indigo-600"] svg,
+[class*="from-emerald-600"] svg,
+[class*="from-violet-600"] svg {
+  color: #ffffff !important;
+  stroke: #ffffff !important;
+}
+
+/* 3. Link buttons (like "Full Page" and "Full Ledger") - keep them look clean and prominent */
+[class*="hover:bg-white/[0.08]"] {
+  background-color: #ffffff !important;
+  border: 1px solid var(--color-theme-card-border) !important;
+  color: var(--color-theme-text) !important;
+}
+
+[class*="hover:bg-white/[0.08]"]:hover {
+  background-color: #f1f5f9 !important;
+}
+
+/* Brand clean text transparent clip gradient to readable indigo on light background */
+.text-transparent.bg-clip-text {
+  background-image: linear-gradient(to right, #4f46e5, #0f172a, #6366f1) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  color: transparent !important;
+}

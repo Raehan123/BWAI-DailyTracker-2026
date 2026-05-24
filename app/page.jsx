@@ -166,14 +166,12 @@ export default function DashboardOverview() {
   const handleDeleteTransaction = (id) => {
     playSound('delete', soundEnabled);
     setTransactions((prev) => prev.filter((t) => t.id !== id));
-  };
-
-  if (!mounted) {
+  };  if (!mounted) {
     return (
-      <div className="min-h-screen bg-zinc-300 flex items-center justify-center font-mono">
-        <div className="border-4 border-black bg-white p-6 shadow-[6px_6px_0px_rgba(0,0,0,1)] flex items-center gap-3">
-          <div className="animate-spin h-5 w-5 border-4 border-black border-t-transparent"></div>
-          <span className="font-extrabold uppercase">Loading Retro Engine...</span>
+      <div className="min-h-screen bg-slate-950 flex items-center justify-center font-sans text-slate-100">
+        <div className="border border-white/10 bg-slate-900/60 backdrop-blur-xl p-6 rounded-2xl shadow-2xl flex items-center gap-3">
+          <div className="animate-spin h-5 w-5 border-2 border-indigo-500 border-t-transparent rounded-full"></div>
+          <span className="font-semibold text-xs tracking-wider uppercase text-slate-300">Loading Digital Engine...</span>
         </div>
       </div>
     );
@@ -182,7 +180,7 @@ export default function DashboardOverview() {
   return (
     <div
       id="main-container"
-      className="min-h-screen p-4 md:p-8 max-w-7xl mx-auto selection:bg-yellow-400 selection:text-black flex flex-col gap-6"
+      className="min-h-screen p-4 md:p-8 max-w-7xl mx-auto selection:bg-indigo-500/40 selection:text-white flex flex-col gap-6 relative z-10"
     >
       {/* 1. SHARED HEADER & NAV */}
       <HeaderAndNav />
@@ -196,31 +194,31 @@ export default function DashboardOverview() {
           {/* A. QUICK ADD CONSOLE */}
           <section
             id="quick-add-console"
-            className="border-4 border-black bg-white shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] flex flex-col"
+            className="border border-white/10 bg-slate-900/[0.25] backdrop-blur-xl rounded-3xl overflow-hidden flex flex-col shadow-[0_8px_32px_0_rgba(0,0,0,0.2)]"
           >
-            <div className="bg-zinc-950 text-white p-3 border-b-4 border-black flex items-center justify-between">
+            <div className="bg-white/[0.04] text-white p-4 border-b border-white/10 flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <Sparkles size={16} className="text-yellow-400" />
-                <h2 className="text-sm font-black uppercase italic tracking-tight">Console Tambah Cepat</h2>
+                <Sparkles size={16} className="text-indigo-400" />
+                <h2 className="text-sm font-bold uppercase tracking-wider">Console Tambah Cepat</h2>
               </div>
-              <span className="bg-yellow-400 text-black text-[9px] font-bold px-1.5 py-0.5 border border-black uppercase">
+              <span className="bg-indigo-500/15 text-indigo-400 text-[9px] font-bold px-2 py-0.5 border border-indigo-500/20 rounded-full uppercase tracking-wider">
                 Active
               </span>
             </div>
 
-            <div className="p-4 bg-zinc-100">
+            <div className="p-5">
               {/* TAB SELECTORS */}
-              <div className="grid grid-cols-3 border-3 border-black bg-zinc-950 p-1 mb-4 gap-1">
+              <div className="grid grid-cols-3 bg-white/[0.03] border border-white/5 p-1 mb-4 gap-1 rounded-xl">
                 <button
                   id="tab-task"
                   onClick={() => {
                     playSound('click', soundEnabled);
                     setActiveTab('task');
                   }}
-                  className={`py-2 text-[10px] sm:text-xs font-black uppercase text-center cursor-pointer transition ${
+                  className={`py-2 text-[10px] sm:text-xs font-bold uppercase tracking-wider text-center rounded-lg cursor-pointer transition duration-300 ${
                     activeTab === 'task'
-                      ? 'bg-red-500 text-white border-2 border-black shadow-[2px_2px_0px_rgba(0,0,0,1)]'
-                      : 'bg-zinc-800 text-zinc-400 hover:text-white'
+                      ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/10'
+                      : 'text-slate-400 hover:text-white hover:bg-white/5'
                   }`}
                 >
                   🗂️ QUEST
@@ -231,10 +229,10 @@ export default function DashboardOverview() {
                     playSound('click', soundEnabled);
                     setActiveTab('money');
                   }}
-                  className={`py-2 text-[10px] sm:text-xs font-black uppercase text-center cursor-pointer transition ${
+                  className={`py-2 text-[10px] sm:text-xs font-bold uppercase tracking-wider text-center rounded-lg cursor-pointer transition duration-300 ${
                     activeTab === 'money'
-                      ? 'bg-blue-600 text-white border-2 border-black shadow-[2px_2px_0px_rgba(0,0,0,1)]'
-                      : 'bg-zinc-800 text-zinc-400 hover:text-white'
+                      ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/10'
+                      : 'text-slate-400 hover:text-white hover:bg-white/5'
                   }`}
                 >
                   💰 UANG
@@ -245,10 +243,10 @@ export default function DashboardOverview() {
                     playSound('click', soundEnabled);
                     setActiveTab('habit');
                   }}
-                  className={`py-2 text-[10px] sm:text-xs font-black uppercase text-center cursor-pointer transition ${
+                  className={`py-2 text-[10px] sm:text-xs font-bold uppercase tracking-wider text-center rounded-lg cursor-pointer transition duration-300 ${
                     activeTab === 'habit'
-                      ? 'bg-emerald-500 text-black border-2 border-black shadow-[2px_2px_0px_rgba(0,0,0,1)]'
-                      : 'bg-zinc-800 text-zinc-400 hover:text-white'
+                      ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/10'
+                      : 'text-slate-400 hover:text-white hover:bg-white/5'
                   }`}
                 >
                   🔄 HABIT
@@ -257,9 +255,9 @@ export default function DashboardOverview() {
 
               {/* TAB CONTENT 1: QUEST / TASK */}
               {activeTab === 'task' && (
-                <form onSubmit={handleAddTask} className="flex flex-col gap-3">
+                <form onSubmit={handleAddTask} className="flex flex-col gap-4">
                   <div>
-                    <label className="block text-[10px] font-extrabold uppercase tracking-wider text-zinc-700 mb-1">
+                    <label className="block text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-1.5">
                       Nama Tugas / Quest Harian
                     </label>
                     <input
@@ -269,19 +267,19 @@ export default function DashboardOverview() {
                       placeholder="Contoh: Belajar NextJS 15 jam..."
                       value={taskText}
                       onChange={(e) => setTaskText(e.target.value)}
-                      className="w-full bg-white text-black border-2 border-black p-2 font-mono text-xs shadow-[2px_2px_0px_rgba(0,0,0,1)] focus:outline-none focus:bg-stone-50"
+                      className="w-full bg-white/[0.04] border border-white/10 text-white placeholder-slate-500 p-2.5 text-xs rounded-xl focus:border-indigo-500/50 focus:ring-2 focus:ring-indigo-500/10 focus:outline-none transition-all duration-300"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-[10px] font-extrabold uppercase tracking-wider text-zinc-700 mb-1">
+                    <label className="block text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-1.5">
                       Tingkat Kesulitan / HP Cost
                     </label>
                     <select
                       id="input-task-difficulty"
                       value={taskDifficulty}
                       onChange={(e) => setTaskDifficulty(e.target.value)}
-                      className="w-full bg-white text-black border-2 border-black p-2 font-mono text-xs font-bold shadow-[2px_2px_0px_rgba(0,0,0,1)] focus:outline-none"
+                      className="w-full bg-slate-900 border border-white/10 text-white p-2.5 text-xs font-bold rounded-xl focus:border-indigo-500/50 focus:outline-none focus:ring-2 focus:ring-indigo-500/10 transition-all duration-300"
                     >
                       <option value="★ LIGHT">★ LIGHT (Mudah / Instan)</option>
                       <option value="★ MEDIUM">★ MEDIUM (Progres Sedang)</option>
@@ -292,7 +290,7 @@ export default function DashboardOverview() {
                   <button
                     id="submit-task-btn"
                     type="submit"
-                    className="w-full border-3 border-black bg-red-500 text-white font-black uppercase py-2.5 text-xs tracking-wider shadow-[3px_3px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_rgba(0,0,0,1)] hover:bg-red-600 transition cursor-pointer mt-2"
+                    className="w-full bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white font-bold uppercase py-2.5 text-xs tracking-wider rounded-xl shadow-lg shadow-indigo-600/10 active:scale-[0.98] transition-all cursor-pointer mt-2"
                   >
                     ➕ TAMBAH TUGAS (QUEST)
                   </button>
@@ -301,7 +299,7 @@ export default function DashboardOverview() {
 
               {/* TAB CONTENT 2: MONEY / CASHFLOW */}
               {activeTab === 'money' && (
-                <form onSubmit={handleAddTransaction} className="flex flex-col gap-3">
+                <form onSubmit={handleAddTransaction} className="flex flex-col gap-4">
                   <div className="grid grid-cols-2 gap-2">
                     <button
                       id="trans-type-expense-btn"
@@ -310,10 +308,10 @@ export default function DashboardOverview() {
                         playSound('click', soundEnabled);
                         setTransType('expense');
                       }}
-                      className={`py-1.5 text-[10px] font-black uppercase tracking-wider border-2 border-black transition ${
+                      className={`py-2 text-[10px] font-bold uppercase tracking-wider border rounded-xl transition duration-300 ${
                         transType === 'expense'
-                          ? 'bg-red-500 text-white shadow-[2px_2px_0px_rgba(0,0,0,1)]'
-                          : 'bg-white text-zinc-500 hover:text-black'
+                          ? 'bg-rose-500/20 text-rose-300 border-rose-500/30 font-bold shadow-sm'
+                          : 'bg-white/[0.02] border-white/5 text-slate-400 hover:text-white'
                       }`}
                     >
                       💸 EXPENSE (-)
@@ -325,10 +323,10 @@ export default function DashboardOverview() {
                         playSound('click', soundEnabled);
                         setTransType('income');
                       }}
-                      className={`py-1.5 text-[10px] font-black uppercase tracking-wider border-2 border-black transition ${
+                      className={`py-2 text-[10px] font-bold uppercase tracking-wider border rounded-xl transition duration-300 ${
                         transType === 'income'
-                          ? 'bg-green-500 text-white border-black shadow-[2px_2px_0px_rgba(0,0,0,1)]'
-                          : 'bg-white text-zinc-500 hover:text-black'
+                          ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30 font-bold shadow-sm'
+                          : 'bg-white/[0.02] border-white/5 text-slate-400 hover:text-white'
                       }`}
                     >
                       💰 INCOME (+)
@@ -336,7 +334,7 @@ export default function DashboardOverview() {
                   </div>
 
                   <div>
-                    <label className="block text-[10px] font-extrabold uppercase tracking-wider text-zinc-700 mb-1">
+                    <label className="block text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-1.5">
                       Keterangan Transaksi
                     </label>
                     <input
@@ -346,13 +344,13 @@ export default function DashboardOverview() {
                       placeholder="Contoh: Beli Makan Siang Padang..."
                       value={transText}
                       onChange={(e) => setTransText(e.target.value)}
-                      className="w-full bg-white text-black border-2 border-black p-2 font-mono text-xs shadow-[2px_2px_0px_rgba(0,0,0,1)] focus:outline-none"
+                      className="w-full bg-white/[0.04] border border-white/10 text-white placeholder-slate-500 p-2.5 text-xs rounded-xl focus:border-indigo-500/50 focus:ring-2 focus:ring-indigo-500/10 focus:outline-none transition-all duration-300"
                     />
                   </div>
 
-                  <div className="grid grid-cols-2 gap-2">
+                  <div className="grid grid-cols-2 gap-2.5">
                     <div>
-                      <label className="block text-[10px] font-extrabold uppercase tracking-wider text-zinc-700 mb-1">
+                      <label className="block text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-1.5">
                         Jumlah (Rupiah)
                       </label>
                       <input
@@ -363,19 +361,19 @@ export default function DashboardOverview() {
                         placeholder="e.g. 15000"
                         value={transAmount}
                         onChange={(e) => setTransAmount(e.target.value)}
-                        className="w-full bg-white text-black border-2 border-black p-2 font-mono text-xs shadow-[2px_2px_0px_rgba(0,0,0,1)] focus:outline-none"
+                        className="w-full bg-white/[0.04] border border-white/10 text-white placeholder-slate-500 p-2.5 text-xs rounded-xl focus:border-indigo-500/50 focus:ring-2 focus:ring-indigo-500/10 focus:outline-none transition-all duration-300"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-[10px] font-extrabold uppercase tracking-wider text-zinc-700 mb-1">
+                      <label className="block text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-1.5">
                         Kategori
                       </label>
                       <select
                         id="input-trans-category"
                         value={transCategory}
                         onChange={(e) => setTransCategory(e.target.value)}
-                        className="w-full bg-white text-black border-2 border-black p-2 font-mono text-xs font-bold shadow-[2px_2px_0px_rgba(0,0,0,1)] focus:outline-none"
+                        className="w-full bg-slate-900 border border-white/10 text-white p-2.5 text-xs font-bold rounded-xl focus:border-indigo-500/50 focus:outline-none focus:ring-2 focus:ring-indigo-500/10 transition-all duration-300"
                       >
                         <option value="Jajan">🍔 Jajan</option>
                         <option value="Project">💼 Project</option>
@@ -389,7 +387,7 @@ export default function DashboardOverview() {
                   <button
                     id="submit-trans-btn"
                     type="submit"
-                    className="w-full border-3 border-black bg-blue-600 text-white font-black uppercase py-2.5 text-xs tracking-wider shadow-[3px_3px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_rgba(0,0,0,1)] hover:bg-blue-650 transition cursor-pointer mt-2"
+                    className="w-full bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white font-bold uppercase py-2.5 text-xs tracking-wider rounded-xl shadow-lg shadow-indigo-600/10 active:scale-[0.98] transition-all cursor-pointer mt-2"
                   >
                     🧾 CATAT TRANSAKSI
                   </button>
@@ -398,9 +396,9 @@ export default function DashboardOverview() {
 
               {/* TAB CONTENT 3: HABIT */}
               {activeTab === 'habit' && (
-                <form onSubmit={handleAddHabit} className="flex flex-col gap-3">
+                <form onSubmit={handleAddHabit} className="flex flex-col gap-4">
                   <div>
-                    <label className="block text-[10px] font-extrabold uppercase tracking-wider text-zinc-700 mb-1">
+                    <label className="block text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-1.5">
                       Nama Kebiasaan Positif
                     </label>
                     <input
@@ -410,18 +408,18 @@ export default function DashboardOverview() {
                       placeholder="Contoh: Olahraga Ringan pagi..."
                       value={habitText}
                       onChange={(e) => setHabitText(e.target.value)}
-                      className="w-full bg-white text-black border-2 border-black p-2 font-mono text-xs shadow-[2px_2px_0px_rgba(0,0,0,1)] focus:outline-none"
+                      className="w-full bg-white/[0.04] border border-white/10 text-white placeholder-slate-500 p-2.5 text-xs rounded-xl focus:border-indigo-500/50 focus:ring-2 focus:ring-indigo-500/10 focus:outline-none transition-all duration-300"
                     />
                   </div>
 
-                  <p className="text-[9px] font-mono leading-tight text-neutral-800 bg-amber-200 border border-dashed border-black p-2 rounded-none">
+                  <p className="text-[10px] leading-relaxed text-indigo-200 bg-indigo-500/10 border border-indigo-500/20 p-3 rounded-xl">
                     💡 Kebiasaan baru ditambahkan dengan status mingguan kosong. Anda dapat mengelolanya secara lengkap di tab Habit Tracker.
                   </p>
 
                   <button
                     id="submit-habit-btn"
                     type="submit"
-                    className="w-full border-3 border-black bg-emerald-500 text-black font-black uppercase py-2.5 text-xs tracking-wider shadow-[3px_3px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_rgba(0,0,0,1)] hover:bg-emerald-450 transition cursor-pointer mt-2"
+                    className="w-full bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white font-bold uppercase py-2.5 text-xs tracking-wider rounded-xl shadow-lg shadow-indigo-600/10 active:scale-[0.98] transition-all cursor-pointer mt-2"
                   >
                     ⚡ DAFTARKAN HABIT BARU
                   </button>
@@ -433,24 +431,24 @@ export default function DashboardOverview() {
           {/* B. CORE SYSTEM METRIC COUNTER */}
           <section
             id="system-stats-widget"
-            className="border-4 border-black bg-white shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] flex flex-col"
+            className="border border-white/10 bg-slate-900/[0.25] backdrop-blur-xl rounded-3xl overflow-hidden flex flex-col shadow-[0_8px_32px_0_rgba(0,0,0,0.2)]"
           >
-            <div className="bg-zinc-800 text-white p-3 border-b-4 border-black flex items-center gap-2">
-              <Info size={16} className="text-yellow-400" />
-              <h2 className="text-sm font-black uppercase italic tracking-tight">System Global Analysis</h2>
+            <div className="bg-white/[0.04] text-white p-4 border-b border-white/10 flex items-center gap-2">
+              <Info size={16} className="text-indigo-400" />
+              <h2 className="text-sm font-bold uppercase tracking-wider">System Global Analysis</h2>
             </div>
 
-            <div className="p-4 space-y-3 font-mono text-xs bg-zinc-50">
-              <div className="border-2 border-black p-3 bg-white">
-                <div className="flex justify-between items-center mb-1 font-bold">
-                  <span>🎯 QUESTS PROGRESS CARD:</span>
-                  <span className="bg-red-500 text-white px-2 py-0.5 text-[10px] uppercase border border-black font-bold">
+            <div className="p-5 space-y-4 font-sans text-xs bg-transparent">
+              <div className="bg-white/[0.02] border border-white/5 rounded-2xl p-3.5 shadow-md flex flex-col gap-2">
+                <div className="flex justify-between items-center font-bold">
+                  <span className="text-slate-300 tracking-wide">🎯 QUESTS PROGRESS CARD:</span>
+                  <span className="bg-indigo-500/25 border border-indigo-500/30 text-indigo-300 px-2.5 py-0.5 text-[9px] uppercase font-bold rounded-lg tracking-wider">
                     {tasks.filter((t) => t.completed).length}/{tasks.length} DONE
                   </span>
                 </div>
-                <div className="w-full bg-zinc-200 border-2 border-black h-4 overflow-hidden">
+                <div className="w-full bg-white/5 border border-white/5 h-3 overflow-hidden rounded-full self-stretch mt-1">
                   <div
-                    className="bg-red-500 h-full border-r border-black transition-all duration-300"
+                    className="bg-indigo-500 h-full rounded-full transition-all duration-500 shadow-[0_0_12px_rgba(99,102,241,0.5)]"
                     style={{
                       width: `${tasks.length > 0 ? (tasks.filter((t) => t.completed).length / tasks.length) * 100 : 0}%`
                     }}
@@ -458,32 +456,30 @@ export default function DashboardOverview() {
                 </div>
               </div>
 
-              <div className="border-2 border-black p-3 bg-white">
-                <div className="flex justify-between items-center mb-1 font-bold">
-                  <span>🔥 HIGHEST ACTIVE STREAK:</span>
-                  <span className="bg-emerald-400 text-black px-2 py-0.5 text-[10px] uppercase border border-black font-bold">
+              <div className="bg-white/[0.02] border border-white/5 rounded-2xl p-3.5 shadow-md flex flex-col gap-1.5">
+                <div className="flex justify-between items-center font-bold">
+                  <span className="text-slate-300 tracking-wide">🔥 HIGHEST ACTIVE STREAK:</span>
+                  <span className="bg-orange-500/15 border border-orange-500/30 text-orange-300 px-2.5 py-0.5 text-[9px] uppercase font-bold rounded-lg tracking-wider">
                     {habits.length > 0 ? Math.max(...habits.map((h) => h.streak)) : 0} DAY
                   </span>
                 </div>
-                <div className="flex items-center gap-2 mt-2">
-                  <Flame className="text-orange-500 fill-orange-500 shrink-0 animate-bounce" size={16} />
-                  <span className="text-[9px] text-zinc-500 leading-none uppercase">
+                <div className="flex items-center gap-2 mt-1">
+                  <Flame className="text-orange-400 fill-orange-400/20 shrink-0" size={16} />
+                  <span className="text-[10px] text-slate-400 leading-normal">
                     Pertahankan kedisiplinan harian secara beruntun!
                   </span>
                 </div>
               </div>
 
-              <div className="border-2 border-black p-3 bg-white">
-                <div className="flex justify-between items-center mb-1 font-bold">
-                  <span>💳 TOTAL FINANCES CASH:</span>
-                  <span
-                    className={`px-2 py-0.5 text-[10px] border border-black font-bold ${
-                      currentBalance >= 0 ? 'bg-green-400 text-black' : 'bg-red-500 text-white'
-                    }`}
-                  >
-                    Rp {currentBalance.toLocaleString('id-ID')}
-                  </span>
-                </div>
+              <div className="bg-white/[0.02] border border-white/5 rounded-2xl p-3.5 shadow-md flex justify-between items-center">
+                <span className="text-slate-300 font-bold tracking-wide">💳 TOTAL FINANCES CASH:</span>
+                <span
+                  className={`px-3 py-1 text-[11px] font-bold rounded-xl border ${
+                    currentBalance >= 0 ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-300' : 'bg-rose-500/10 border-rose-500/30 text-rose-300'
+                  }`}
+                >
+                  Rp {currentBalance.toLocaleString('id-ID')}
+                </span>
               </div>
             </div>
           </section>
@@ -494,25 +490,25 @@ export default function DashboardOverview() {
             ========================================================= */}
         <div id="right-column" className="lg:col-span-8 flex flex-col gap-6">
           {/* A. CONDENSED QUESTS PREVIEW */}
-          <section className="border-4 border-black bg-white shadow-[6px_6px_0px_rgba(0,0,0,1)] flex flex-col">
-            <div className="bg-red-600 text-white p-4 border-b-4 border-black flex justify-between items-center">
+          <section className="border border-white/10 bg-slate-900/[0.25] backdrop-blur-xl rounded-3xl overflow-hidden flex flex-col shadow-[0_8px_32px_0_rgba(0,0,0,0.2)]">
+            <div className="bg-gradient-to-r from-red-500/10 to-transparent text-white p-4 border-b border-white/10 flex justify-between items-center">
               <div className="flex items-center gap-2">
-                <CheckSquare size={18} className="shrink-0 text-yellow" />
-                <h2 className="text-base font-black uppercase italic tracking-tight">Active Quests (Preview)</h2>
+                <CheckSquare size={18} className="shrink-0 text-red-400" />
+                <h2 className="text-sm font-bold uppercase tracking-wider">Active Quests (Preview)</h2>
               </div>
               <Link
                 href="/tasks"
-                className="bg-yellow-400 text-black font-black text-[10px] uppercase px-3 py-1 border-2 border-black hover:bg-yellow-350 transition flex items-center gap-1 shadow-[2px_2px_0px_rgba(0,0,0,1)] cursor-pointer"
+                className="bg-white/[0.04] border border-white/10 hover:bg-white/[0.08] text-white font-bold text-[10px] uppercase px-3.5 py-1.5 rounded-lg transition-all duration-200 flex items-center gap-1.5 cursor-pointer shadow-sm"
               >
                 <span>Full Page</span>
-                <ArrowRight size={12} strokeWidth={3} />
+                <ArrowRight size={12} strokeWidth={2.5} />
               </Link>
             </div>
 
-            <div className="p-4 space-y-2.5 bg-zinc-50">
+            <div className="p-5 space-y-2.5">
               {tasks.filter((t) => !t.completed).slice(0, 3).length === 0 ? (
-                <div className="text-center p-6 border-2 border-dashed border-zinc-350 bg-white">
-                  <p className="text-xs font-mono text-zinc-500 uppercase">Tidak ada Quest Aktif yang tersisa 🎉</p>
+                <div className="text-center p-6 border border-dashed border-white/15 bg-white/[0.01] rounded-2xl">
+                  <p className="text-xs font-medium text-slate-400 uppercase tracking-widest">Tidak ada Quest Aktif yang tersisa 🎉</p>
                 </div>
               ) : (
                 tasks
@@ -521,18 +517,18 @@ export default function DashboardOverview() {
                   .map((t) => (
                     <div
                       key={t.id}
-                      className="border-2 border-black p-3 bg-white flex justify-between items-center shadow-[2px_2px_0px_rgba(0,0,0,1)] hover:bg-zinc-50 transition"
+                      className="border border-white/5 p-3.5 bg-white/[0.02] hover:bg-white/[0.04] hover:border-white/10 rounded-2xl flex justify-between items-center transition duration-300"
                     >
-                      <div className="flex items-center gap-2">
+                      <div className="flex items-center gap-2.5">
                         <button
                           onClick={() => handleToggleTask(t.id)}
-                          className="w-5 h-5 border-2 border-black hover:bg-zinc-100 flex items-center justify-center cursor-pointer shrink-0"
+                          className="w-5 h-5 rounded-lg border border-white/20 hover:border-indigo-400 hover:bg-white/5 flex items-center justify-center cursor-pointer shrink-0 transition"
                         >
-                          {t.completed && <Check size={12} strokeWidth={4} />}
+                          {t.completed && <Check size={12} strokeWidth={3} className="text-indigo-400" />}
                         </button>
-                        <span className="text-xs font-bold text-zinc-900 truncate max-w-xs sm:max-w-md">{t.text}</span>
+                        <span className="text-xs font-semibold text-slate-200 truncate max-w-xs sm:max-w-md">{t.text}</span>
                       </div>
-                      <span className="text-[8px] px-1 font-mono uppercase bg-amber-200 border border-black font-bold text-zinc-800">
+                      <span className="text-[8px] px-2 py-0.5 rounded-full font-bold uppercase bg-amber-500/10 border border-amber-500/20 text-amber-300">
                         {t.difficulty}
                       </span>
                     </div>
@@ -542,61 +538,61 @@ export default function DashboardOverview() {
           </section>
 
           {/* B. CONDENSED FINANCIAL PREVIEW */}
-          <section className="border-4 border-black bg-white shadow-[6px_6px_0px_rgba(0,0,0,1)] flex flex-col">
-            <div className="bg-blue-600 text-white p-4 border-b-4 border-black flex justify-between items-center">
+          <section className="border border-white/10 bg-slate-900/[0.25] backdrop-blur-xl rounded-3xl overflow-hidden flex flex-col shadow-[0_8px_32px_0_rgba(0,0,0,0.2)]">
+            <div className="bg-gradient-to-r from-blue-500/10 to-transparent text-white p-4 border-b border-white/10 flex justify-between items-center">
               <div className="flex items-center gap-2">
-                <CreditCard size={18} className="shrink-0 text-white" />
-                <h2 className="text-base font-black uppercase italic tracking-tight">Cashflow Ledger (Preview)</h2>
+                <CreditCard size={18} className="shrink-0 text-blue-400" />
+                <h2 className="text-sm font-bold uppercase tracking-wider">Cashflow Ledger (Preview)</h2>
               </div>
               <Link
                 href="/transactions"
-                className="bg-yellow-400 text-black font-black text-[10px] uppercase px-3 py-1 border-2 border-black hover:bg-yellow-350 transition flex items-center gap-1 shadow-[2px_2px_0px_rgba(0,0,0,1)] cursor-pointer"
+                className="bg-white/[0.04] border border-white/10 hover:bg-white/[0.08] text-white font-bold text-[10px] uppercase px-3.5 py-1.5 rounded-lg transition-all duration-200 flex items-center gap-1.5 cursor-pointer shadow-sm"
               >
                 <span>Full Ledger</span>
-                <ArrowRight size={12} strokeWidth={3} />
+                <ArrowRight size={12} strokeWidth={2.5} />
               </Link>
             </div>
 
-            <div className="p-4 space-y-2.5 bg-zinc-50">
+            <div className="p-5 space-y-2.5">
               {transactions.slice(0, 3).length === 0 ? (
-                <div className="text-center p-6 border-2 border-dashed border-zinc-350 bg-white">
-                  <p className="text-xs font-mono text-zinc-500 uppercase">Belum ada riwayat transaksi</p>
+                <div className="text-center p-6 border border-dashed border-white/15 bg-white/[0.01] rounded-2xl">
+                  <p className="text-xs font-medium text-slate-400 uppercase tracking-widest">Belum ada riwayat transaksi</p>
                 </div>
               ) : (
                 transactions.slice(0, 3).map((tr) => (
                   <div
                     key={tr.id}
-                    className="border-2 border-black p-3 bg-white flex justify-between items-center font-mono shadow-[2px_2px_0px_rgba(0,0,0,1)] hover:bg-zinc-50"
+                    className="border border-white/5 p-3.5 bg-white/[0.02] hover:bg-white/[0.04] hover:border-white/10 rounded-2xl flex justify-between items-center transition duration-300"
                   >
-                    <div className="flex items-center gap-2.5">
+                    <div className="flex items-center gap-3">
                       <span
-                        className={`w-7 h-7 border-2 border-black flex items-center justify-center text-[10px] font-black shrink-0 ${
-                          tr.type === 'income' ? 'bg-green-400 text-black' : 'bg-red-400 text-white'
+                        className={`w-7 h-7 rounded-lg border flex items-center justify-center text-[10px] font-black shrink-0 ${
+                          tr.type === 'income' ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-300' : 'bg-rose-500/15 border-rose-500/20 text-rose-300'
                         }`}
                       >
                         {tr.type === 'income' ? 'IN' : 'OT'}
                       </span>
                       <div className="flex flex-col">
-                        <span className="text-xs font-bold leading-tight text-neutral-900">{tr.text}</span>
-                        <span className="text-[8px] bg-zinc-200 border border-zinc-450 px-1 self-start font-bold mt-0.5 text-zinc-800 uppercase">
+                        <span className="text-xs font-bold leading-tight text-slate-100">{tr.text}</span>
+                        <span className="text-[8px] bg-white/5 border border-white/5 rounded px-1.5 self-start font-bold mt-0.5 text-slate-400 uppercase tracking-wide">
                           {tr.category}
                         </span>
                       </div>
                     </div>
                     <div className="flex items-center gap-3">
                       <span
-                        className={`text-xs font-black ${
-                          tr.type === 'income' ? 'text-green-700' : 'text-red-700'
+                        className={`text-xs font-bold ${
+                          tr.type === 'income' ? 'text-emerald-400' : 'text-rose-400'
                         }`}
                       >
                         {tr.type === 'income' ? '+' : '-'} Rp{Math.abs(tr.amount).toLocaleString('id-ID')}
                       </span>
                       <button
                         onClick={() => handleDeleteTransaction(tr.id)}
-                        className="p-1 border border-black hover:bg-red-500 hover:text-white transition cursor-pointer"
+                        className="p-1.5 border border-white/10 hover:border-rose-500/30 rounded-lg hover:bg-rose-500/10 text-slate-400 hover:text-rose-400 transition cursor-pointer"
                         title="Hapus"
                       >
-                        <Trash2 size={10} />
+                        <Trash2 size={11} />
                       </button>
                     </div>
                   </div>
@@ -606,37 +602,37 @@ export default function DashboardOverview() {
           </section>
 
           {/* C. CONDENSED HABITS PREVIEW */}
-          <section className="border-4 border-black bg-white shadow-[6px_6px_0px_rgba(0,0,0,1)] flex flex-col">
-            <div className="bg-emerald-600 text-white p-4 border-b-4 border-black flex justify-between items-center">
+          <section className="border border-white/10 bg-slate-900/[0.25] backdrop-blur-xl rounded-3xl overflow-hidden flex flex-col shadow-[0_8px_32px_0_rgba(0,0,0,0.2)]">
+            <div className="bg-gradient-to-r from-emerald-500/10 to-transparent text-white p-4 border-b border-white/10 flex justify-between items-center">
               <div className="flex items-center gap-2">
-                <RefreshCw size={18} className="shrink-0 text-white" />
-                <h2 className="text-base font-black uppercase italic tracking-tight">Active Habits (Preview)</h2>
+                <RefreshCw size={18} className="shrink-0 text-emerald-400" />
+                <h2 className="text-sm font-bold uppercase tracking-wider">Active Habits (Preview)</h2>
               </div>
               <Link
                 href="/habits"
-                className="bg-yellow-400 text-black font-black text-[10px] uppercase px-3 py-1 border-2 border-black hover:bg-yellow-350 transition flex items-center gap-1 shadow-[2px_2px_0px_rgba(0,0,0,1)] cursor-pointer"
+                className="bg-white/[0.04] border border-white/10 hover:bg-white/[0.08] text-white font-bold text-[10px] uppercase px-3.5 py-1.5 rounded-lg transition-all duration-200 flex items-center gap-1.5 cursor-pointer shadow-sm"
               >
                 <span>Full Habit Tracker</span>
-                <ArrowRight size={12} strokeWidth={3} />
+                <ArrowRight size={12} strokeWidth={2.5} />
               </Link>
             </div>
 
-            <div className="p-4 space-y-2.5 bg-zinc-50">
+            <div className="p-5 space-y-2.5">
               {habits.slice(0, 3).length === 0 ? (
-                <div className="text-center p-6 border-2 border-dashed border-zinc-350 bg-white">
-                  <p className="text-xs font-mono text-zinc-500 uppercase">Belum ada target kebiasaan</p>
+                <div className="text-center p-6 border border-dashed border-white/15 bg-white/[0.01] rounded-2xl">
+                  <p className="text-xs font-medium text-slate-400 uppercase tracking-widest">Belum ada target kebiasaan</p>
                 </div>
               ) : (
                 habits.slice(0, 3).map((h) => (
                   <div
                     key={h.id}
-                    className="border-2 border-black p-3 bg-white flex justify-between items-center shadow-[2px_2px_0px_rgba(0,0,0,1)]"
+                    className="border border-white/5 p-3.5 bg-white/[0.02] hover:bg-white/[0.04] hover:border-white/10 rounded-2xl flex justify-between items-center transition duration-300"
                   >
-                    <span className="text-xs font-bold text-zinc-900 truncate max-w-sm">{h.text}</span>
+                    <span className="text-xs font-semibold text-slate-200 truncate max-w-sm">{h.text}</span>
                     <div className="flex items-center gap-2 font-mono">
-                      <span className="text-[10px] font-bold text-zinc-600 uppercase">STREAK:</span>
-                      <span className="bg-orange-500 text-white font-extrabold text-[10px] px-2 py-0.5 border border-black shadow-[1px_1px_0px_rgba(0,0,0,1)] uppercase flex items-center gap-0.5">
-                        <Flame size={10} className="fill-white" /> {h.streak} DAYS
+                      <span className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">STREAK:</span>
+                      <span className="bg-orange-500/10 hover:bg-orange-500/15 text-orange-300 font-bold text-[10px] px-2.5 py-1 border border-orange-500/25 rounded-lg tracking-wider uppercase flex items-center gap-1">
+                        <Flame size={11} className="fill-orange-400/20" /> {h.streak} DAYS
                       </span>
                     </div>
                   </div>

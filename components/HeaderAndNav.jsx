@@ -18,6 +18,13 @@ export default function HeaderAndNav() {
   const [curDate, setCurDate] = useState('');
   const [currentUser, setCurrentUser] = useState(null);
 
+  // Set default theme to light on component load
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      document.documentElement.setAttribute('data-theme', 'light');
+    }
+  }, []);
+
   // Dynamic user session tracker
   useEffect(() => {
     const loadUser = () => {
@@ -84,58 +91,57 @@ export default function HeaderAndNav() {
   ];
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-4 font-sans">
       {/* HEADER BILLBOARD */}
       <header
         id="app-header"
-        className="border-4 border-black bg-white p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] relative overflow-hidden flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6"
+        className="border border-theme-card-border bg-theme-header-bg backdrop-blur-xl p-6 rounded-3xl relative overflow-hidden flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6 shadow-theme-shadow transition-all duration-300"
       >
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e7eb_1px,transparent_1px),linear-gradient(to_bottom,#e5e7eb_1px,transparent_1px)] bg-[size:16px_16px] opacity-40 pointer-events-none"></div>
-
         <div className="relative z-10">
-
-          <h1 className="text-3xl md:text-5xl font-black uppercase tracking-tighter leading-none select-none">
+          <h1 className="text-3xl md:text-4xl font-extrabold uppercase tracking-tight text-theme-text select-none transition-colors duration-300">
             Mindful Days
           </h1>
-          <p className="text-zinc-700 text-xs md:text-sm font-semibold mt-2 uppercase tracking-tight">
-            Status: <span className="text-green-600 font-bold">Online</span> | User:{' '}
-            <span className="text-purple-700 font-extrabold">{currentUser ? currentUser.name : 'Neo_User_01'}</span> | Mode:{' '}
-            <span className="text-blue-600 font-bold">Multiple Page</span>
+          <p className="text-theme-muted text-xs md:text-sm font-medium mt-1.5 uppercase tracking-wide transition-colors duration-300">
+            Status: <span className="text-emerald-500 font-bold">Online</span> | User:{' '}
+            <span className="text-indigo-600 dark:text-indigo-400 font-extrabold">{currentUser ? currentUser.name : 'Neo_User_01'}</span> | Mode:{' '}
+            <span className="text-violet-600 dark:text-violet-400 font-bold">Dynamic UI</span>
           </p>
         </div>
 
-        <div className="flex flex-col md:flex-row items-stretch md:items-center gap-3 w-full lg:w-auto relative z-10">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full lg:w-auto relative z-10">
           {/* Time & Clock Stash */}
-          <div className="flex min-w-[220px] border-3 border-black bg-zinc-950 text-white p-2 shadow-[3px_3px_0px_rgba(0,0,0,1)] h-12 items-center justify-between font-mono text-xs">
+          <div className="flex-1 sm:flex-initial flex min-w-[240px] border border-theme-card-border bg-theme-item-bg backdrop-blur-md rounded-2xl p-2.5 px-4 h-12 items-center justify-between font-mono text-xs shadow-md transition-all duration-300">
             <div className="flex flex-col justify-center items-start">
-              <span className="text-[9px] uppercase tracking-wider text-zinc-400 font-mono">SYS TIME</span>
-              <span className="text-sm font-black text-yellow-500 tracking-wider">
+              <span className="text-[9px] uppercase tracking-wider text-theme-muted font-sans font-bold transition-colors duration-300">SYS TIME</span>
+              <span className="text-sm font-extrabold text-indigo-600 dark:text-indigo-400 tracking-wider transition-colors duration-300">
                 {curTime || '00:00:00'}
               </span>
             </div>
-            <div className="h-full w-[1px] bg-zinc-700 mx-2"></div>
+            <div className="h-full w-[1px] bg-theme-card-border mx-3 transition-colors duration-300"></div>
             <div className="flex flex-col justify-center items-end text-right">
-              <span className="text-[9px] uppercase tracking-wider text-zinc-400 font-mono">CALENDAR</span>
-              <span className="text-[10px] uppercase font-bold text-white tracking-tight leading-tight w-28 truncate">
+              <span className="text-[9px] uppercase tracking-wider text-theme-muted font-sans font-bold transition-colors duration-300">CALENDAR</span>
+              <span className="text-[10px] uppercase font-semibold text-theme-text opacity-90 tracking-tight leading-tight w-28 truncate transition-colors duration-300">
                 {curDate ? curDate.split(',')[1]?.trim() || curDate : 'HARI INI'}
               </span>
             </div>
           </div>
 
-          {/* Logout Button */}
-          {currentUser && (
-            <button
-              onClick={handleLogout}
-              className="bg-red-500 text-white font-extrabold px-4 py-2 border-3 border-black text-xs uppercase shadow-[3px_3px_0px_rgba(0,0,0,1)] hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[2px_2px_0px_rgba(0,0,0,1)] active:translate-x-[3px] active:translate-y-[3px] active:shadow-none transition-all cursor-pointer h-12 flex items-center justify-center gap-2"
-            >
-              KELUAR / LOGOUT
-            </button>
-          )}
+          <div className="flex items-center gap-3">
+            {/* Logout Button */}
+            {currentUser && (
+              <button
+                onClick={handleLogout}
+                className="bg-rose-500/10 hover:bg-rose-500/20 text-rose-600 dark:text-rose-300 font-bold px-4 py-2 border border-rose-500/30 text-xs uppercase rounded-2xl shadow-md transition-all duration-300 cursor-pointer h-12 flex items-center justify-center gap-2"
+              >
+                LOGOUT
+              </button>
+            )}
+          </div>
         </div>
       </header>
 
-      {/* SYSTEM NAVIGATION (Interactive Neo-Brutalist Tabs) */}
-      <nav id="app-nav" className="grid grid-cols-2 md:grid-cols-4 gap-2">
+      {/* SYSTEM NAVIGATION (Interactive Glassmorphic Tabs) */}
+      <nav id="app-nav" className="grid grid-cols-2 lg:grid-cols-4 gap-2">
         {navItems.map((item) => {
           const isActive = pathname === item.href;
           const IconComponent = item.icon;
@@ -143,13 +149,13 @@ export default function HeaderAndNav() {
             <Link
               key={item.href}
               href={item.href}
-              className={`flex items-center justify-center gap-2 border-3 border-black p-3 text-xs md:text-sm font-black uppercase tracking-tight text-center cursor-pointer transition-all duration-100 shadow-[3px_3px_0px_rgba(0,0,0,1)] hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[2px_2px_0px_rgba(0,0,0,1)] active:translate-x-[3px] active:translate-y-[3px] active:shadow-none select-none ${
+              className={`flex items-center justify-center gap-2 border p-3.5 text-xs md:text-sm font-bold uppercase tracking-wider text-center cursor-pointer transition-all duration-300 rounded-2xl select-none ${
                 isActive
-                  ? 'bg-zinc-900 text-yellow-400 font-black'
-                  : 'bg-white text-zinc-800'
+                  ? 'bg-indigo-600/15 text-indigo-600 dark:text-indigo-300 border-indigo-500/30 shadow-lg shadow-indigo-600/5'
+                  : 'bg-theme-item-bg border-theme-item-border text-theme-muted hover:bg-theme-item-bg-hover hover:text-theme-text'
               }`}
             >
-              <IconComponent size={16} className="shrink-0" />
+              <IconComponent size={15} className={`shrink-0 ${isActive ? 'text-indigo-600 dark:text-indigo-400' : 'text-theme-muted'}`} />
               <span>{item.label}</span>
             </Link>
           );
