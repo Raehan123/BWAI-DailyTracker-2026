@@ -1,15 +1,25 @@
 import { GoogleGenAI } from "@google/genai";
 import { NextRequest, NextResponse } from "next/server";
 
-// Ensure we initialize the client with correct headers and API key from process env
-const ai = new GoogleGenAI({
-  apiKey: process.env.GEMINI_API_KEY,
-  httpOptions: {
-    headers: {
-      "User-Agent": "aistudio-build",
-    },
-  },
-});
+let aiClient: GoogleGenAI | null = null;
+
+function getAiClient() {
+  const apiKey = process.env.GEMINI_API_KEY;
+  if (!apiKey) {
+    throw new Error("GEMINI_API_KEY_MISSING");
+  }
+  if (!aiClient) {
+    aiClient = new GoogleGenAI({
+      apiKey: apiKey,
+      httpOptions: {
+        headers: {
+          "User-Agent": "aistudio-build",
+        },
+      },
+    });
+  }
+  return aiClient;
+}
 
 export async function POST(req: NextRequest) {
   try {
@@ -20,6 +30,21 @@ export async function POST(req: NextRequest) {
         { error: "Pesan tidak boleh kosong" },
         { status: 400 }
       );
+    }
+
+    let ai;
+    try {
+      ai = getAiClient();
+    } catch (e: any) {
+      if (e.message === "GEMINI_API_KEY_MISSING") {
+        return NextResponse.json(
+          { 
+            error: "Kunci API (GEMINI_API_KEY) belum dikonfigurasi. Silakan tambahkan GEMINI_API_KEY Anda di panel Secrets/Settings di dalam Google AI Studio agar asisten cerdas Buddy AI dapat diaktifkan kembali!" 
+          },
+          { status: 403 }
+        );
+      }
+      throw e;
     }
 
     // Prepare systemic instruction based on dashboard context
